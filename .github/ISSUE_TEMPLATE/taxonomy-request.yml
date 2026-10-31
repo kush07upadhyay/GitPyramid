@@ -1,0 +1,41 @@
+name: Taxonomy request
+description: Ask for a new category or a change to the sector and category list.
+title: "Taxonomy: "
+labels: ["area/registry", "needs-triage"]
+body:
+  - type: dropdown
+    id: sector
+    attributes:
+      label: Sector
+      options:
+        - Systems, kernel and infrastructure
+        - Frontend, web and UI/UX
+        - Backend, APIs and databases
+        - AI, LLMs and agent harnesses
+        - DevOps, security and tooling
+    validations:
+      required: true
+  - type: input
+    id: category
+    attributes:
+      label: Proposed category
+      description: A short label and a lowercase slug.
+      placeholder: "Vector search and RAG (vector-search-and-rag)"
+    validations:
+      required: true
+  - type: textarea
+    id: examples
+    attributes:
+      label: Three example repositories that do not fit an existing category
+      placeholder: |
+        - owner/repo
+        - owner/repo
+        - owner/repo
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why is an existing category not enough?
+    validations:
+      required: true

@@ -1,0 +1,74 @@
+# Source of truth for repository labels. Applied by tools/github-setup.mjs.
+# Colors are hex without the leading #.
+- name: type/brick
+  color: "12B5CB"
+  description: Add or change a registry brick
+- name: type/bug
+  color: "D73A4A"
+  description: Something is not working
+- name: type/feature
+  color: "A2EEEF"
+  description: New capability or improvement
+- name: type/spike
+  color: "C58AF9"
+  description: Time-boxed investigation with a written result
+- name: type/docs
+  color: "0075CA"
+  description: Documentation only
+- name: area/registry
+  color: "81C995"
+  description: Manifests, schema, taxonomy, validator
+- name: area/scoring
+  color: "81C995"
+  description: Pyramid Score and ingestion inputs
+- name: area/layout
+  color: "1A73E8"
+  description: Slots, ledger placement, Epochs
+- name: area/3d
+  color: "1A73E8"
+  description: Rendering, picking, stairways in the viewport
+- name: area/ai
+  color: "C58AF9"
+  description: Stack Architect, retrieval, license rules
+- name: area/web
+  color: "12B5CB"
+  description: Site, pages, SEO, accessibility
+- name: area/ci
+  color: "FA903E"
+  description: Workflows, security, release tooling
+- name: area/docs
+  color: "0075CA"
+  description: Docs, ADRs, launch material
+- name: area/sponsors
+  color: "FA903E"
+  description: Sponsor program and Sponsor Steps
+- name: good first issue
+  color: "7057FF"
+  description: Good for a first contribution
+- name: help wanted
+  color: "008672"
+  description: Maintainers would welcome help
+- name: needs-triage
+  color: "EDEDED"
+  description: Not yet reviewed by a maintainer
+- name: needs-review
+  color: "FBCA04"
+  description: Waiting for reviews
+- name: blocked
+  color: "B60205"
+  description: Cannot proceed until something else happens
+- name: constitution
+  color: "5319E7"
+  description: Amends the constitution
+- name: adr-needed
+  color: "5319E7"
+  description: Needs a decision record
+- name: P0
+  color: "B60205"
+  description: Must ship in the release
+- name: P1
+  color: "D93F0B"
+  description: Should ship in the release
+- name: P2
+  color: "FBCA04"
+  description: May slip

@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Ask a question or share an idea
+    url: https://github.com/kush07upadhyay/GitPyramid/discussions
+    about: Discussions are the best place for questions and open-ended ideas.
+  - name: Report a security problem privately
+    url: https://github.com/kush07upadhyay/GitPyramid/security/advisories/new
+    about: Please do not open a public issue for vulnerabilities or poisoned registry content.
+  - name: Sponsor the Grand Stairways
+    url: https://github.com/kush07upadhyay/GitPyramid/blob/main/docs/SPONSORSHIP.md
+    about: How sponsorship works, what it includes and what it never buys.
