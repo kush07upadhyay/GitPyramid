@@ -1,0 +1,16 @@
+CC0 1.0 Universal
+
+The registry data in this folder is dedicated to the public domain under CC0 1.0 Universal.
+
+To the extent possible under law, the contributors to GitPyramid have waived all copyright and
+related or neighboring rights to the registry data (manifests, taxonomy, ledger, scoring
+configuration and schema in this folder). This work is published from India and elsewhere.
+
+You can copy, modify, distribute and use the data, even for commercial purposes, all without asking
+permission or giving credit.
+
+The full legal text is at https://creativecommons.org/publicdomain/zero/1.0/legalcode
+
+This file is a summary notice for the registry folder. The source code in the rest of the
+repository is licensed separately under the MIT License, see the LICENSE file in the repository
+root. Sponsor artwork is not covered by either license, see sponsors/NOTICE.md.

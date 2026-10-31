@@ -1,0 +1,305 @@
+{
+  "version": 1,
+  "sectors": [
+    {
+      "id": "systems",
+      "label": "Systems, Kernel and Infrastructure",
+      "color": "#1A73E8",
+      "categories": [
+        {
+          "id": "operating-systems",
+          "label": "Operating systems",
+          "description": "Kernels, distributions and system layers."
+        },
+        {
+          "id": "languages-and-compilers",
+          "label": "Languages and compilers",
+          "description": "Programming languages, compilers and interpreters."
+        },
+        {
+          "id": "runtimes",
+          "label": "Runtimes and virtual machines",
+          "description": "Language runtimes, WebAssembly runtimes and VMs."
+        },
+        {
+          "id": "networking",
+          "label": "Networking",
+          "description": "Protocols, proxies, DNS, VPN and network stacks."
+        },
+        {
+          "id": "storage-and-filesystems",
+          "label": "Storage and filesystems",
+          "description": "Filesystems, object storage and block storage."
+        },
+        {
+          "id": "virtualization",
+          "label": "Virtualization",
+          "description": "Hypervisors, emulators and low-level container runtimes."
+        },
+        {
+          "id": "embedded-and-iot",
+          "label": "Embedded and IoT",
+          "description": "Firmware, real-time systems and device frameworks."
+        },
+        {
+          "id": "graphics-and-drivers",
+          "label": "Graphics and drivers",
+          "description": "Graphics stacks, drivers and hardware abstraction."
+        }
+      ]
+    },
+    {
+      "id": "frontend",
+      "label": "Frontend, Web and UI/UX",
+      "color": "#12B5CB",
+      "categories": [
+        {
+          "id": "ui-frameworks",
+          "label": "UI frameworks",
+          "description": "Frameworks for building user interfaces."
+        },
+        {
+          "id": "component-libraries",
+          "label": "Component libraries",
+          "description": "Reusable UI components and design systems."
+        },
+        {
+          "id": "css-and-styling",
+          "label": "CSS and styling",
+          "description": "Styling frameworks, CSS tooling and utilities."
+        },
+        {
+          "id": "state-and-data-fetching",
+          "label": "State and data fetching",
+          "description": "Client state, caching and data loading."
+        },
+        {
+          "id": "bundlers-and-dev-servers",
+          "label": "Bundlers and dev servers",
+          "description": "Build tools for web applications."
+        },
+        {
+          "id": "graphics-3d-and-games",
+          "label": "3D, graphics and games",
+          "description": "WebGL, 3D engines and game libraries."
+        },
+        {
+          "id": "data-visualization",
+          "label": "Data visualization",
+          "description": "Charts, maps and visual analytics libraries."
+        },
+        {
+          "id": "animation-and-motion",
+          "label": "Animation and motion",
+          "description": "Animation libraries and motion tools."
+        },
+        {
+          "id": "mobile-and-desktop-apps",
+          "label": "Mobile and desktop apps",
+          "description": "Cross-platform app frameworks and shells."
+        },
+        {
+          "id": "accessibility-and-i18n",
+          "label": "Accessibility and internationalization",
+          "description": "Tools for accessible and localized interfaces."
+        },
+        {
+          "id": "static-sites-and-cms",
+          "label": "Static sites and CMS",
+          "description": "Site generators and content management."
+        }
+      ]
+    },
+    {
+      "id": "backend",
+      "label": "Backend, APIs and Databases",
+      "color": "#81C995",
+      "categories": [
+        {
+          "id": "web-frameworks",
+          "label": "Web frameworks",
+          "description": "Server-side frameworks for HTTP applications."
+        },
+        {
+          "id": "api-and-rpc",
+          "label": "APIs and RPC",
+          "description": "REST, GraphQL, gRPC and API tooling."
+        },
+        {
+          "id": "databases-sql",
+          "label": "SQL databases",
+          "description": "Relational databases and engines."
+        },
+        {
+          "id": "databases-nosql-and-search",
+          "label": "NoSQL and search",
+          "description": "Document, key-value, graph and search engines."
+        },
+        {
+          "id": "orm-and-query-builders",
+          "label": "ORMs and query builders",
+          "description": "Database access layers."
+        },
+        {
+          "id": "auth-and-identity",
+          "label": "Authentication and identity",
+          "description": "Login, OAuth, OpenID and identity providers."
+        },
+        {
+          "id": "messaging-and-queues",
+          "label": "Messaging and queues",
+          "description": "Message brokers, streams and queues."
+        },
+        {
+          "id": "caching-and-kv",
+          "label": "Caching and key-value stores",
+          "description": "In-memory caches and key-value stores."
+        },
+        {
+          "id": "workflows-and-jobs",
+          "label": "Workflows and jobs",
+          "description": "Job schedulers and workflow engines."
+        },
+        {
+          "id": "serverless-and-edge",
+          "label": "Serverless and edge",
+          "description": "Functions, edge runtimes and serverless frameworks."
+        },
+        {
+          "id": "backend-as-a-service",
+          "label": "Backend as a service",
+          "description": "Hosted or self-hosted backend platforms."
+        }
+      ]
+    },
+    {
+      "id": "ai",
+      "label": "AI, LLMs and Agent Harnesses",
+      "color": "#C58AF9",
+      "categories": [
+        {
+          "id": "ml-frameworks",
+          "label": "Machine learning frameworks",
+          "description": "Libraries for building and training models."
+        },
+        {
+          "id": "inference-and-serving",
+          "label": "Inference and serving",
+          "description": "Running and serving models efficiently."
+        },
+        {
+          "id": "llm-apps-and-orchestration",
+          "label": "LLM apps and orchestration",
+          "description": "Frameworks for building LLM applications."
+        },
+        {
+          "id": "agent-frameworks",
+          "label": "Agent frameworks",
+          "description": "Frameworks and harnesses for AI agents."
+        },
+        {
+          "id": "mcp-servers-and-tools",
+          "label": "MCP servers and tools",
+          "description": "Model Context Protocol servers, clients and tooling."
+        },
+        {
+          "id": "vector-search-and-rag",
+          "label": "Vector search and RAG",
+          "description": "Vector databases and retrieval tooling."
+        },
+        {
+          "id": "model-evaluation",
+          "label": "Evaluation and observability",
+          "description": "Evaluating, tracing and monitoring models."
+        },
+        {
+          "id": "speech-vision-multimodal",
+          "label": "Speech, vision and multimodal",
+          "description": "Audio, image and video models and tools."
+        },
+        {
+          "id": "training-and-fine-tuning",
+          "label": "Training and fine-tuning",
+          "description": "Training, fine-tuning and data preparation."
+        },
+        {
+          "id": "ai-dev-tools",
+          "label": "AI developer tools",
+          "description": "Coding assistants and developer-facing AI tools."
+        }
+      ]
+    },
+    {
+      "id": "devops",
+      "label": "DevOps, Security and Tooling",
+      "color": "#FA903E",
+      "categories": [
+        {
+          "id": "ci-cd",
+          "label": "CI and CD",
+          "description": "Build, test and deployment automation."
+        },
+        {
+          "id": "containers-and-orchestration",
+          "label": "Containers and orchestration",
+          "description": "Container platforms and schedulers."
+        },
+        {
+          "id": "infrastructure-as-code",
+          "label": "Infrastructure as code",
+          "description": "Provisioning and configuration management."
+        },
+        {
+          "id": "observability-and-monitoring",
+          "label": "Observability and monitoring",
+          "description": "Metrics, logs, traces and dashboards."
+        },
+        {
+          "id": "security-scanning",
+          "label": "Security scanning",
+          "description": "Vulnerability, dependency and secret scanning."
+        },
+        {
+          "id": "secrets-and-identity-management",
+          "label": "Secrets and access management",
+          "description": "Secrets storage and access control."
+        },
+        {
+          "id": "testing-and-quality",
+          "label": "Testing and quality",
+          "description": "Test frameworks, browsers automation and quality tools."
+        },
+        {
+          "id": "linters-and-formatters",
+          "label": "Linters and formatters",
+          "description": "Static analysis and code formatting."
+        },
+        {
+          "id": "package-and-dependency-management",
+          "label": "Package and dependency management",
+          "description": "Package managers and dependency tooling."
+        },
+        {
+          "id": "developer-environments",
+          "label": "Developer environments",
+          "description": "Dev containers, shells and environment tooling."
+        },
+        {
+          "id": "documentation-tools",
+          "label": "Documentation tools",
+          "description": "Docs generators and knowledge tooling."
+        },
+        {
+          "id": "cli-tools-and-terminals",
+          "label": "CLI tools and terminals",
+          "description": "Command-line utilities and terminal tools."
+        },
+        {
+          "id": "developer-discovery",
+          "label": "Developer discovery",
+          "description": "Registries and tools for finding other tools."
+        }
+      ]
+    }
+  ]
+}

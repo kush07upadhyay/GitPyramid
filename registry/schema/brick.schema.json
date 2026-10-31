@@ -1,0 +1,92 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://gitpyramid.com/schema/brick/v1.json",
+  "title": "GitPyramid brick manifest",
+  "description": "Facts about one open-source project. Scores, states, ids and positions are not stored here.",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "maxLength": 200
+    },
+    "schemaVersion": {
+      "type": "number",
+      "const": 1
+    },
+    "repo": {
+      "type": "string",
+      "pattern": "^[a-z0-9](?:[a-z0-9]|-(?=[a-z0-9])){0,38}\\/[a-z0-9._-]{1,100}$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 60
+    },
+    "sector": {
+      "type": "string",
+      "enum": [
+        "systems",
+        "frontend",
+        "backend",
+        "ai",
+        "devops"
+      ]
+    },
+    "category": {
+      "type": "string",
+      "maxLength": 48,
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "problemSolved": {
+      "type": "string",
+      "minLength": 20,
+      "maxLength": 160,
+      "pattern": "\\.$"
+    },
+    "techStack": {
+      "minItems": 1,
+      "maxItems": 8,
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9][a-z0-9+#.-]{0,29}$"
+      }
+    },
+    "license": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "website": {
+      "type": "string",
+      "maxLength": 200
+    },
+    "compatibleWith": {
+      "maxItems": 12,
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9](?:[a-z0-9]|-(?=[a-z0-9])){0,38}\\/[a-z0-9._-]{1,100}$"
+      }
+    },
+    "alternatives": {
+      "maxItems": 8,
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9](?:[a-z0-9]|-(?=[a-z0-9])){0,38}\\/[a-z0-9._-]{1,100}$"
+      }
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "repo",
+    "name",
+    "sector",
+    "category",
+    "problemSolved",
+    "techStack",
+    "license"
+  ],
+  "additionalProperties": false
+}
