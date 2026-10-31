@@ -134,6 +134,9 @@ only worth using if nobody can pay to change it.
 - Sponsor data lives in `sponsors/` and MUST change only with maintainer approval.
 - A maintainer or reviewer with a financial or employment tie to a project's company MUST disclose it
   and MUST NOT be the only approver of that project's brick.
+- A product owned by a maintainer (for example the founder's own SaaS) MUST be labeled "By the
+  maintainer" wherever it appears, follows the same placement rules as a sponsor, and MUST NOT use
+  or change ranking.
 - Sponsors MUST meet the acceptable-sponsor policy in `docs/SPONSORSHIP.md`. Maintainers may decline
   or remove a sponsor.
 
@@ -149,15 +152,17 @@ fund the stairs. Contributors build the walls.
 - Registry layout: `registry/bricks/<owner>/<repo>.json`, all lowercase, one brick per file.
 - Sponsor data: `sponsors/<slug>.json` plus `sponsors/assets/`, edited by maintainers only. It is not
   registry data and never feeds scoring, ranking or AI output.
+- Agent skills: generated Spec Kit skills live in `.github/skills/` and are not edited by hand.
+  Hand-written project skills live in `.agents/skills/`.
 - Changing the baseline stack above requires an ADR in `docs/decisions/`.
 
 ## Development Workflow
 
 - `main` MUST always be releasable. Work happens on short-lived branches named `feat/`, `fix/`,
-  `docs/`, `chore/`, `ci/`, `brick/<owner>-<repo>`, or `NNN-feature-name` for Spec Kit features.
+  `docs/`, `chore/`, `ci/`, `brick/<owner>-<repo>`, or `NNN-feature-name` for specced features.
 - Commits follow Conventional Commits and contain one logical change each.
-- A non-trivial feature MUST start with a spec in `specs/NNN-feature-name/` created by
-  `/speckit-specify`, then follow plan, tasks and implement.
+- A non-trivial feature MUST start with a written spec in `specs/NNN-feature-name/`, then follow
+  plan, tasks and implement. Spec Kit templates and commands are recommended, not required.
 - A pull request is mergeable when CI is green, docs are updated, a maintainer approved it, and for
   brick pull requests the 4-for-1 requirement is met. Merges are squash merges.
 
@@ -177,4 +182,4 @@ it, the constitution wins unless it is amended first.
   constitution directly. Each amendment is still recorded in the version line.
 - Day-to-day guidance for contributors and AI agents lives in `AGENTS.md`.
 
-**Version**: 1.2.0 | **Ratified**: 2026-11-01 | **Last Amended**: 2026-11-01
+**Version**: 1.3.0 | **Ratified**: 2026-11-01 | **Last Amended**: 2026-11-01
