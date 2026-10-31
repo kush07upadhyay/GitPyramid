@@ -44,13 +44,15 @@ Rationale: people share screenshots and links. A monument that rearranges itself
 ### IV. Performance and Access Are Features
 
 - The monument MUST render in at most 4 draw calls (three brick passes and one sponsor poster pass)
-  and hold 60 FPS on mid-range mobile GPUs, with the
-  device pixel ratio capped at 1.5.
+  and hold 60 FPS on mid-range mobile GPUs, with the device pixel ratio capped at 1.5.
 - The compiled manifest at 50,000 bricks MUST stay under 600 KB over the wire.
 - The sponsor poster atlas MUST load after the first render and stay within its published byte
   budget.
 - Every 3D capability MUST have a keyboard and screen-reader accessible 2D equivalent (the Architect
-  Table View). Motion MUST respect `prefers-reduced-motion`.
+  Table View). The 2D views MUST meet WCAG 2.2 level AA. Motion MUST respect
+  `prefers-reduced-motion`.
+- Pointer picking MUST NOT scan every brick on the CPU per event. The technique is chosen by ADR and
+  MUST meet these budgets on the lowest supported device.
 - A change that breaks a budget MUST include a measurement and an ADR, or be reverted.
 
 Rationale: most visitors arrive from a phone. A slow or inaccessible 3D page is a failed page.
@@ -59,6 +61,8 @@ Rationale: most visitors arrive from a phone. A slow or inaccessible 3D page is 
 
 - Pure logic (schema validation, scoring, layout, license checks, ranking) MUST have tests written
   before or together with the implementation, including edge cases and boundary values.
+- Every spec MUST list its edge cases. Each edge case MUST map to a test or to a written decision
+  that it is out of scope.
 - Rendering and UI work MUST have acceptance scenarios in the feature spec and MUST be checked visually
   and for frame time.
 - `pnpm check` (lint, typecheck, test and registry validation) MUST pass in CI before merge.
@@ -120,6 +124,11 @@ only worth using if nobody can pay to change it.
 - Sponsor links MUST use HTTPS and MUST carry `rel="sponsored noopener noreferrer"`.
 - The site MUST NOT load third-party ad code, trackers, pixels or cookies for sponsors. Sponsor images
   are static, reviewed by a maintainer and served from our own origin.
+- Sponsor reporting MUST be limited to first-party aggregate counts (views and clicks per placement)
+  with no cookies and no personal data. The method is public in `docs/SPONSORSHIP.md`.
+- Sponsor logos belong to their owners. They are used under the sponsor agreement, are not covered by
+  this project's MIT or CC0 grants (see `sponsors/NOTICE.md`), and the default build MUST render
+  neutral placeholders. Only the official deployment loads real sponsor art.
 - Sponsor visuals MUST NOT animate, flash, play sound, cover bricks or block navigation, and MUST NOT
   appear between bricks in the keyboard and screen-reader views.
 - Sponsor data lives in `sponsors/` and MUST change only with maintainer approval.
@@ -135,8 +144,8 @@ fund the stairs. Contributors build the walls.
 
 - Language and tooling: TypeScript in strict mode, Node.js 22 or newer, pnpm workspaces, Biome for
   lint and format, Vitest for tests.
-- Web: Three.js through React Three Fiber, `three-mesh-bvh` for picking, static assets served from the
-  edge. The web framework choice is recorded in `docs/decisions/`.
+- Web: Three.js through React Three Fiber, static assets served from the edge. The web framework,
+  picking technique and transparency technique are recorded in `docs/decisions/`.
 - Registry layout: `registry/bricks/<owner>/<repo>.json`, all lowercase, one brick per file.
 - Sponsor data: `sponsors/<slug>.json` plus `sponsors/assets/`, edited by maintainers only. It is not
   registry data and never feeds scoring, ranking or AI output.
@@ -168,4 +177,4 @@ it, the constitution wins unless it is amended first.
   constitution directly. Each amendment is still recorded in the version line.
 - Day-to-day guidance for contributors and AI agents lives in `AGENTS.md`.
 
-**Version**: 1.1.0 | **Ratified**: 2026-11-01 | **Last Amended**: 2026-11-01
+**Version**: 1.2.0 | **Ratified**: 2026-11-01 | **Last Amended**: 2026-11-01
