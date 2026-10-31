@@ -1,0 +1,44 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build output
+dist/
+build/
+coverage/
+.next/
+.astro/
+.turbo/
+.wrangler/
+*.tsbuildinfo
+
+# Generated data (rebuilt from the registry, never committed)
+/.generated/
+
+# Environment and secrets (commit only *.example files)
+.env
+.env.*
+!.env.example
+.dev.vars
+*.pem
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors (shared settings live in .vscode/settings.json and extensions.json)
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+
+# Python (Spec Kit tooling)
+__pycache__/
+*.py[cod]
+.venv/
