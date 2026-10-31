@@ -1,0 +1,29 @@
+{
+  "name": "gitpyramid",
+  "version": "0.0.0",
+  "private": true,
+  "description": "The Pyramid of all the relevant repos and tools a developer needs.",
+  "license": "MIT",
+  "type": "module",
+  "packageManager": "pnpm@11.0.9",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "lint": "biome check .",
+    "format": "biome check --write .",
+    "typecheck": "pnpm -r --if-present run typecheck",
+    "test": "vitest run",
+    "validate": "tsx packages/registry/src/cli.ts validate",
+    "brick:new": "tsx packages/registry/src/cli.ts new",
+    "build:schema": "tsx packages/registry/src/build-schema.ts",
+    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm validate"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.6.4",
+    "@types/node": "^22.20.5",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.5"
+  }
+}

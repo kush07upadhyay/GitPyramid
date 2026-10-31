@@ -1,0 +1,22 @@
+{
+  "name": "@gitpyramid/registry",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Brick manifest schema, validator and CLI.",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "spdx-expression-parse": "^5.0.0",
+    "spdx-license-ids": "^3.0.24",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/spdx-expression-parse": "^4.0.0"
+  }
+}
