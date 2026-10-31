@@ -11,7 +11,8 @@ and the config files alone.
 - A manifest MUST hold only human-curated facts. Volatile or derived values (stars, scores, state,
   slot coordinates, brick ids) MUST NOT be stored in a manifest.
 - Every manifest MUST validate against the published JSON Schema before it can be merged.
-- The repository MUST NOT contain third-party source code. It stores metadata and links only.
+- The repository MUST NOT contain third-party source code. It stores metadata and links, plus the
+  sponsor logos described in Principle IX.
 
 Rationale: reviewers can only check facts. Mixing facts with live numbers causes merge conflicts,
 fake data and noisy history.
@@ -42,9 +43,12 @@ Rationale: people share screenshots and links. A monument that rearranges itself
 
 ### IV. Performance and Access Are Features
 
-- The monument MUST render in at most 3 draw calls and hold 60 FPS on mid-range mobile GPUs, with the
+- The monument MUST render in at most 4 draw calls (three brick passes and one sponsor poster pass)
+  and hold 60 FPS on mid-range mobile GPUs, with the
   device pixel ratio capped at 1.5.
 - The compiled manifest at 50,000 bricks MUST stay under 600 KB over the wire.
+- The sponsor poster atlas MUST load after the first render and stay within its published byte
+  budget.
 - Every 3D capability MUST have a keyboard and screen-reader accessible 2D equivalent (the Architect
   Table View). Motion MUST respect `prefers-reduced-motion`.
 - A change that breaks a budget MUST include a measurement and an ADR, or be reverted.
@@ -71,6 +75,9 @@ Rationale: the scoring and layout rules are public promises. Tests are how we ke
 - Secrets MUST NOT appear in the repository or the client bundle. CI MUST use least-privilege tokens,
   MUST NOT run untrusted code under `pull_request_target`, and third-party actions MUST be pinned to a
   full commit SHA.
+- Images from outside the maintainer team (sponsor logos, user uploads) MUST be re-encoded by our
+  build and served from our own origin. The site MUST ship a Content Security Policy that blocks
+  third-party scripts and images.
 - Public endpoints that cost money MUST have bot protection, per-client rate limits and a hard monthly
   budget cap.
 
@@ -99,6 +106,31 @@ Rationale: the project depends on other people's work and on a platform we do no
 Rationale: this is bootstrapped by one founder and a community. Cost and complexity are the real
 limits.
 
+### IX. Sponsorship Never Buys Curation
+
+GitPyramid is funded in part by sponsors whose logos appear on the Grand Stairways. The registry is
+only worth using if nobody can pay to change it.
+
+- Sponsorship MUST NOT influence which bricks exist, or any brick's score, size, state, position,
+  search ranking or AI Stack Architect output. Sponsor data MUST NOT be an input to any of them.
+- Every sponsor placement MUST be labeled "Sponsor" wherever it appears (3D tooltip, HUD, Table View)
+  and MUST be listed on the public Sponsors page with its tier and term. A sponsor visual that is not
+  listed there MUST NOT ship. Contract amounts are private. Tier and term are public.
+- A sponsor placement MUST NOT be presented as an endorsement, partnership or review.
+- Sponsor links MUST use HTTPS and MUST carry `rel="sponsored noopener noreferrer"`.
+- The site MUST NOT load third-party ad code, trackers, pixels or cookies for sponsors. Sponsor images
+  are static, reviewed by a maintainer and served from our own origin.
+- Sponsor visuals MUST NOT animate, flash, play sound, cover bricks or block navigation, and MUST NOT
+  appear between bricks in the keyboard and screen-reader views.
+- Sponsor data lives in `sponsors/` and MUST change only with maintainer approval.
+- A maintainer or reviewer with a financial or employment tie to a project's company MUST disclose it
+  and MUST NOT be the only approver of that project's brick.
+- Sponsors MUST meet the acceptable-sponsor policy in `docs/SPONSORSHIP.md`. Maintainers may decline
+  or remove a sponsor.
+
+Rationale: trust is the only asset a curated registry has, and one paid ranking ends it. Sponsors
+fund the stairs. Contributors build the walls.
+
 ## Technical Constraints
 
 - Language and tooling: TypeScript in strict mode, Node.js 22 or newer, pnpm workspaces, Biome for
@@ -106,6 +138,8 @@ limits.
 - Web: Three.js through React Three Fiber, `three-mesh-bvh` for picking, static assets served from the
   edge. The web framework choice is recorded in `docs/decisions/`.
 - Registry layout: `registry/bricks/<owner>/<repo>.json`, all lowercase, one brick per file.
+- Sponsor data: `sponsors/<slug>.json` plus `sponsors/assets/`, edited by maintainers only. It is not
+  registry data and never feeds scoring, ranking or AI output.
 - Changing the baseline stack above requires an ADR in `docs/decisions/`.
 
 ## Development Workflow
@@ -130,6 +164,8 @@ it, the constitution wins unless it is amended first.
   one, PATCH for clarifications.
 - Compliance: every plan produced by `/speckit-plan` MUST pass the Constitution Check. Reviewers MUST
   verify compliance. Deviations MUST be justified in the plan's Complexity Tracking table.
+- Bootstrap exception: until the first external contribution is merged, the founder may amend this
+  constitution directly. Each amendment is still recorded in the version line.
 - Day-to-day guidance for contributors and AI agents lives in `AGENTS.md`.
 
-**Version**: 1.0.0 | **Ratified**: 2026-11-01 | **Last Amended**: 2026-11-01
+**Version**: 1.1.0 | **Ratified**: 2026-11-01 | **Last Amended**: 2026-11-01
