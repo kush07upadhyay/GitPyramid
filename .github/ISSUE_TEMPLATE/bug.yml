@@ -1,0 +1,48 @@
+name: Bug report
+description: Something is broken in the validator, scoring, tooling, docs or the site.
+title: "Bug: "
+labels: ["type/bug", "needs-triage"]
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: Where is the problem?
+      options:
+        - Registry validator or CLI
+        - Scoring
+        - CI workflow
+        - Documentation
+        - Website or 3D view
+        - Something else
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you do, and what did you see?
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Run `pnpm validate`
+        2. ...
+  - type: textarea
+    id: env
+    attributes:
+      label: Environment
+      description: Browser and device for the site. Node, pnpm and operating system for tools.
+  - type: textarea
+    id: logs
+    attributes:
+      label: Output or screenshots
+      render: text

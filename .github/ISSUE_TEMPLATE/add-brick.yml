@@ -1,0 +1,77 @@
+name: Suggest a brick
+description: Suggest an open-source project for the registry. No pull request needed.
+title: "Add brick: owner/repo"
+labels: ["type/brick", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a project. A contributor or maintainer will turn this into a brick.
+        Prefer to do it yourself? See [Add a brick in 10 minutes](https://github.com/kush07upadhyay/GitPyramid/blob/main/CONTRIBUTING.md#add-a-brick-in-10-minutes).
+  - type: input
+    id: repo
+    attributes:
+      label: Repository
+      description: The GitHub address of the project.
+      placeholder: https://github.com/owner/name
+    validations:
+      required: true
+  - type: dropdown
+    id: sector
+    attributes:
+      label: Sector
+      options:
+        - Systems, kernel and infrastructure
+        - Frontend, web and UI/UX
+        - Backend, APIs and databases
+        - AI, LLMs and agent harnesses
+        - DevOps, security and tooling
+    validations:
+      required: true
+  - type: input
+    id: category
+    attributes:
+      label: Best matching category
+      description: Optional. See registry/taxonomy.json for the list.
+      placeholder: web-frameworks
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does it solve?
+      description: One plain sentence, written by you. No links, no hype.
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why does it deserve a brick?
+      description: Name a specific strength, use or gap it fills.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Similar projects
+      description: Projects that do a similar job, listed already or not.
+  - type: dropdown
+    id: relationship
+    attributes:
+      label: Your relationship to the project
+      options:
+        - I maintain it
+        - I contribute to it
+        - I use it
+        - I just found it
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: Checks
+      options:
+        - label: The repository is public, open source and not archived.
+          required: true
+        - label: I searched the registry and it is not listed yet.
+          required: true
+        - label: I wrote the text above myself, or I checked every claim if a tool helped.
+          required: true

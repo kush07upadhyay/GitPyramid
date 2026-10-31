@@ -1,0 +1,14 @@
+# Maintainers own everything by default.
+*                                  @kush07upadhyay
+
+# Trust boundaries: only maintainers change these files.
+/registry/ledger.jsonl             @kush07upadhyay
+/registry/taxonomy.json            @kush07upadhyay
+/registry/scoring.config.json      @kush07upadhyay
+/sponsors/                         @kush07upadhyay
+/.specify/memory/constitution.md   @kush07upadhyay
+/.github/                          @kush07upadhyay
+/docs/decisions/                   @kush07upadhyay
+
+# Sector captains can be added per area later, for example:
+# /packages/layout/                @some-captain
