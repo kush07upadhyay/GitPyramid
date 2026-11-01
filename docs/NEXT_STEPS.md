@@ -91,10 +91,11 @@ founding plan was wrong or unverified, with the evidence).
 The decisions in `docs/decisions` are marked **Proposed**. Change the status line to **Accepted**
 in the ones you agree with, and open a discussion about the ones you do not.
 
-## 2. Push to GitHub
+## 2. Push to GitHub (done for `main`)
 
-**Do this before step 3.** Step 3 locks `main` so that it only accepts pull requests, and then you
-cannot push directly any more.
+`main` was pushed on 2026-11-01 as a plain fast-forward, and the CI `check` job passed on its first
+run. Keep this section for the pattern below: any later direct push has to happen **before step 3**,
+because step 3 locks `main` so that it only accepts pull requests.
 
 ```powershell
 git status
@@ -102,20 +103,20 @@ git push origin main
 ```
 
 - `git status` should say the working tree is clean.
-- The first push opens a browser window to sign in. Use that. **Never paste a token into a
-  command or a file.**
-- The push is a plain fast-forward of what is on GitHub. If Git refuses, do not force anything. Stop
-  and ask.
-- Only `main` needs to go. The other local branches are merged history.
+- Sign in with the browser window Git opens. **Never paste a token into a command or a file.**
+- Push only a plain fast-forward. If Git refuses, do not force anything. Stop and ask.
+- Only `main` needs to go. The other local branches are merged history, except the five `brick/*`
+  branches, which step 5 turns into review pull requests.
 
-Then open the repository on GitHub and check that the README looks right, the **Actions** tab shows
-a green CI run, and the logo shows. Your contribution graph fills from commits on `main` made with
-an email GitHub knows. The commits use your `noreply` address, which counts.
+Check on GitHub that the README looks right, the **Actions** tab shows a green CI run, and the logo
+shows. Your contribution graph fills from commits on `main` made with an email GitHub knows. The
+commits use your `noreply` address, which counts.
 
 ## 3. Apply the repository settings
 
 `pnpm setup:github` sets the description, topics, squash-only merging, secret scanning, private
-vulnerability reporting, pinned-action enforcement, 24 labels, the seed issues and a protection
+vulnerability reporting, pinned-action enforcement, approval of checks on pull requests from forks,
+24 labels, the seed issues and a protection
 ruleset on `main`. It prints a plan first and changes nothing until you add `--apply`. It is safe to
 run twice.
 
@@ -156,8 +157,9 @@ left alone. Add `--prune-default-labels` if you want them gone.
   Ideas, Show and tell.
 - **Social preview** (optional): **Settings**, **General**, **Social preview**. Upload a 1280 by 640
   PNG. A simple one is the logo from `docs/brand/logo.svg` on a plain background.
-- **First-time contributors** (optional): **Settings**, **Actions**, **General**, **Fork pull request
-  workflows**. Keep the default unless you see abuse.
+- **Collaborators:** repository **Settings**, **Collaborators**. Keep the list empty. Nobody on it
+  means nobody but you can push to `main` or to any other branch of this repository. See
+  [who can change what](#who-can-change-what).
 
 ### 3e. Clean up
 
@@ -183,6 +185,31 @@ git push -u origin docs/fix-typo
 GitHub prints a link. Open it, create the pull request, wait for the green checks and choose
 **Squash and merge**. The title becomes the commit message on `main`, so write it as a
 [Conventional Commit](https://www.conventionalcommits.org).
+
+### Who can change what
+
+This is the access model, and it needs no extra setting beyond the steps above.
+
+| Who | Can do | How it is enforced |
+| :--- | :--- | :--- |
+| You | Push branches, merge pull requests, change anything | You are the owner of the repository |
+| Everyone else | Fork, push to their own fork, open a pull request | A repository with no collaborators accepts no pushes from anyone else, on any branch |
+
+- A contributor's brick branch lives in their own fork. Nobody else can touch it, and nobody can
+  change `main` or any other branch here. A contributor may also comment on and review other
+  people's pull requests.
+- Nothing is merged without you. Only you can press **Squash and merge**, so your merge is the
+  approval. A contributor's review is advice.
+- The ruleset asks for **0 required approvals** on purpose. On a personal repository GitHub does not
+  let an author approve their own pull request, so a required approval would block your own merges.
+  Do not turn on required approvals or code owner review until a second maintainer exists.
+- Checks on a pull request from a fork wait for your approval before they run (the pull request
+  shows a button for it). That stops a stranger's workflow change from running on GitHub's machines.
+- The ruleset requires the `check` and `pr-rules` checks to be green before **Squash and merge** is
+  enabled. The `pr-rules` check also refuses edits to the ledger, the sponsor files and the license
+  files from anyone without write access.
+- Do not add people under **Collaborators** just so they can contribute. That gives them write
+  access. Add someone only when you decide they are a maintainer.
 
 ## 4. Domain and email
 
@@ -279,12 +306,14 @@ rank, and the constitution makes that a rule, so you never have to argue it case
 
 ## What could not be done in advance, and what is unproven
 
-- Pushing, signing in, buying, emailing and posting need your accounts, so none of it was done.
+- Pushing `main` is done. Signing in elsewhere, buying, emailing and posting need your accounts, so
+  none of that was done.
 - `pnpm setup:github` has only been run as a dry run against the public repository, because that
   needs no token. Its request shapes were checked against GitHub's own API description, and its
   logic has tests, but the first `--apply` may show a permission message. That is expected and safe
   to repeat.
 - The GitHub Actions workflow has been checked against GitHub's schema and rehearsed command by
-  command, but it has not run on GitHub yet. The first push is its first real run. If it fails, read
-  the log, fix the cause on a branch and open a pull request.
+  command. The `check` job passed on its first run on GitHub on 2026-11-01. The `pr-rules` job runs
+  only on pull requests, so it is unproven until the first one. If it fails, read the log, fix the
+  cause on a branch and open a pull request.
 - The 3D monument, search and AI are designed in the specs but not built.

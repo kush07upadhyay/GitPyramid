@@ -152,6 +152,10 @@ GitHub. Set `GITHUB_TOKEN` in your environment to avoid rate limits.
 
 ## Branches, commits and pull requests
 
+- Contributors do not push to this repository. Fork it, make a branch in your fork and open a
+  pull request. Nothing reaches `main` or any other branch here until a maintainer merges it.
+  Checks on a pull request from a fork start after a maintainer approves them, so the first checks
+  can take a little while.
 - Work on a branch, not on `main`. Names: `feat/`, `fix/`, `docs/`, `chore/`, `ci/`, and
   `brick/<owner>-<repo>` for bricks.
 - Use [Conventional Commits](https://www.conventionalcommits.org): `feat(registry): add

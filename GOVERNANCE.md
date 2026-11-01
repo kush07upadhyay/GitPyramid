@@ -19,6 +19,10 @@ Becoming a captain: about 10 merged bricks and about 20 substantive reviews, the
 invites you. Becoming a maintainer: a long record of captain-level work and a maintainer vote. A
 maintainer who is inactive for six months becomes emeritus and can return on request.
 
+Only maintainers have write access to this repository. Everyone else works in a fork and opens a
+pull request, and a maintainer merges it. While there is a single maintainer, a review or approval
+from anyone else is advice, and the maintainer's merge is the decision.
+
 ## How decisions are made
 
 - Maintainers decide, in public where possible, and explain why.
