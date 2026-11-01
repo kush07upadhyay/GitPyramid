@@ -280,11 +280,11 @@ rank, and the constitution makes that a rule, so you never have to argue it case
 ## What could not be done in advance, and what is unproven
 
 - Pushing, signing in, buying, emailing and posting need your accounts, so none of it was done.
-- `pnpm setup:github` has been run for real only as a dry run against the public repository, because
-  I have no token. Its request shapes were checked against GitHub's own API description, and its
+- `pnpm setup:github` has only been run as a dry run against the public repository, because that
+  needs no token. Its request shapes were checked against GitHub's own API description, and its
   logic has tests, but the first `--apply` may show a permission message. That is expected and safe
   to repeat.
 - The GitHub Actions workflow has been checked against GitHub's schema and rehearsed command by
-  command, but it has not run on GitHub yet. The first push is its first real run. If it fails, send
-  me the log.
+  command, but it has not run on GitHub yet. The first push is its first real run. If it fails, read
+  the log, fix the cause on a branch and open a pull request.
 - The 3D monument, search and AI are designed in the specs but not built.
