@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schema/brick.schema.json",
+  "schemaVersion": 1,
+  "repo": "ollama/ollama",
+  "name": "Ollama",
+  "sector": "ai",
+  "category": "inference-and-serving",
+  "problemSolved": "Runs large language models on a local machine and serves them through a command line and an HTTP API.",
+  "techStack": ["go", "c++"],
+  "license": "MIT",
+  "website": "https://ollama.com"
+}

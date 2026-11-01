@@ -1,0 +1,11 @@
+{
+  "$schema": "../../schema/brick.schema.json",
+  "schemaVersion": 1,
+  "repo": "kush07upadhyay/gitpyramid",
+  "name": "GitPyramid",
+  "sector": "devops",
+  "category": "developer-discovery",
+  "problemSolved": "Shows open-source projects as bricks of a 3D pyramid so developers can find and combine them.",
+  "techStack": ["typescript", "nodejs", "zod"],
+  "license": "MIT"
+}

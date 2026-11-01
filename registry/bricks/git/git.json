@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schema/brick.schema.json",
+  "schemaVersion": 1,
+  "repo": "git/git",
+  "name": "Git",
+  "sector": "devops",
+  "category": "version-control",
+  "problemSolved": "Tracks changes to files as a distributed version control system, with full local history and fast branching.",
+  "techStack": ["c", "shell"],
+  "license": "GPL-2.0-only",
+  "website": "https://git-scm.com"
+}

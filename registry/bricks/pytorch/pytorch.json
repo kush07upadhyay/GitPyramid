@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schema/brick.schema.json",
+  "schemaVersion": 1,
+  "repo": "pytorch/pytorch",
+  "name": "PyTorch",
+  "sector": "ai",
+  "category": "ml-frameworks",
+  "problemSolved": "Trains and runs neural networks with tensors, automatic differentiation and GPU acceleration.",
+  "techStack": ["python", "c++", "cuda"],
+  "license": "BSD-3-Clause",
+  "website": "https://pytorch.org"
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schema/brick.schema.json",
+  "schemaVersion": 1,
+  "repo": "tailwindlabs/tailwindcss",
+  "name": "Tailwind CSS",
+  "sector": "frontend",
+  "category": "css-and-styling",
+  "problemSolved": "Styles interfaces with small single-purpose utility classes that are composed directly in markup.",
+  "techStack": ["css", "typescript"],
+  "license": "MIT",
+  "website": "https://tailwindcss.com"
+}

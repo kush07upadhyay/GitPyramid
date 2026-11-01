@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schema/brick.schema.json",
+  "schemaVersion": 1,
+  "repo": "kubernetes/kubernetes",
+  "name": "Kubernetes",
+  "sector": "devops",
+  "category": "containers-and-orchestration",
+  "problemSolved": "Schedules and manages containers across clusters of machines, handling scaling, rollouts and recovery.",
+  "techStack": ["go", "containers"],
+  "license": "Apache-2.0",
+  "website": "https://kubernetes.io"
+}

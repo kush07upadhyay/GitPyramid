@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schema/brick.schema.json",
+  "schemaVersion": 1,
+  "repo": "react/react",
+  "name": "React",
+  "sector": "frontend",
+  "category": "ui-frameworks",
+  "problemSolved": "Builds user interfaces from composable components that update when the underlying data changes.",
+  "techStack": ["javascript"],
+  "license": "MIT",
+  "website": "https://react.dev"
+}
