@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 200" role="img" aria-labelledby="gp-title gp-desc" width="240" height="200">
+  <title id="gp-title">GitPyramid logo</title>
+  <desc id="gp-desc">A stepped pyramid of fifteen bricks in five colors, one color for each sector of the registry.</desc>
+  <!-- Rows from the top: 1, 2, 3, 4 and 5 bricks. Colors cycle through the five sector colors. -->
+  <g stroke="#000000" stroke-opacity="0.18" stroke-width="1.5">
+    <rect x="102" y="12" width="36" height="28" rx="4" fill="#1A73E8"/>
+
+    <rect x="84" y="44" width="36" height="28" rx="4" fill="#12B5CB"/>
+    <rect x="120" y="44" width="36" height="28" rx="4" fill="#81C995"/>
+
+    <rect x="66" y="76" width="36" height="28" rx="4" fill="#C58AF9"/>
+    <rect x="102" y="76" width="36" height="28" rx="4" fill="#FA903E"/>
+    <rect x="138" y="76" width="36" height="28" rx="4" fill="#1A73E8"/>
+
+    <rect x="48" y="108" width="36" height="28" rx="4" fill="#12B5CB"/>
+    <rect x="84" y="108" width="36" height="28" rx="4" fill="#81C995"/>
+    <rect x="120" y="108" width="36" height="28" rx="4" fill="#C58AF9"/>
+    <rect x="156" y="108" width="36" height="28" rx="4" fill="#FA903E"/>
+
+    <rect x="30" y="140" width="36" height="28" rx="4" fill="#1A73E8"/>
+    <rect x="66" y="140" width="36" height="28" rx="4" fill="#12B5CB"/>
+    <rect x="102" y="140" width="36" height="28" rx="4" fill="#81C995"/>
+    <rect x="138" y="140" width="36" height="28" rx="4" fill="#C58AF9"/>
+    <rect x="174" y="140" width="36" height="28" rx="4" fill="#FA903E"/>
+  </g>
+</svg>
