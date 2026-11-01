@@ -380,6 +380,18 @@ describe("repository configuration", () => {
       can_approve_pull_request_reviews: false,
     });
   });
+
+  it("makes every pull request from a fork wait for a maintainer to approve its checks", () => {
+    const ops = planActions(repo);
+    expect(ops).toHaveLength(3);
+    expect(ops[2]).toMatchObject({
+      step: "actions",
+      method: "PUT",
+      path: "/repos/kush07upadhyay/GitPyramid/actions/permissions/fork-pr-contributor-approval",
+      body: { approval_policy: "all_external_contributors" },
+    });
+    expect(ops[2]?.summary).not.toMatch(/[\u2013\u2014]/);
+  });
 });
 
 describe("the main branch ruleset", () => {
@@ -699,7 +711,7 @@ describe("runSetup", () => {
     expect(count("ruleset")).toBe(1);
     expect(count("settings")).toBe(1);
     expect(count("security")).toBe(3);
-    expect(count("actions")).toBe(2);
+    expect(count("actions")).toBe(3);
   });
 
   it("applies in the documented order, with the ruleset last", async () => {

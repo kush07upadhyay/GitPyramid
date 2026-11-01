@@ -54,8 +54,9 @@ Run everything from the repository root. Node 22 or newer. pnpm comes through Co
 ## Who owns what
 
 Contributors may edit bricks, code, tests and docs. Only maintainers edit `registry/ledger.jsonl`,
-`registry/taxonomy.json`, `registry/scoring.config.json`, `sponsors/`, `.github/`, the constitution
-and `docs/decisions/` (see [CODEOWNERS](.github/CODEOWNERS)). CI refuses ledger and sponsor edits
+`registry/taxonomy.json`, `registry/scoring.config.json`, `sponsors/`, `.github/`, the constitution,
+`docs/decisions/` and the license files (`LICENSE`, `registry/LICENSE`, `THIRD_PARTY_NOTICES.md`)
+(see [CODEOWNERS](.github/CODEOWNERS)). CI refuses ledger, sponsor and license edits
 from contributors. If the user is not a maintainer, do not edit those files. Explain and stop.
 
 ## Conventions

@@ -363,6 +363,13 @@ export function planActions(repo: RepoRef): Operation[] {
       path: `${base(repo)}/actions/permissions/workflow`,
       body: { default_workflow_permissions: "read", can_approve_pull_request_reviews: false },
     },
+    {
+      step: "actions",
+      summary: "make checks on pull requests from forks wait for a maintainer to approve each run",
+      method: "PUT",
+      path: `${base(repo)}/actions/permissions/fork-pr-contributor-approval`,
+      body: { approval_policy: "all_external_contributors" },
+    },
   ];
 }
 

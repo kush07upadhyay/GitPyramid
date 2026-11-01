@@ -113,6 +113,12 @@ describe("checkPullRequest: maintainer-only files", () => {
     ["a sponsor logo", "sponsors/assets/example-co.svg"],
     ["a case variant of the ledger", "Registry/LEDGER.jsonl"],
     ["a case variant of sponsors", "SPONSORS/x.json"],
+    ["the project license", "LICENSE"],
+    ["a case variant of the project license", "license"],
+    ["the registry license", "registry/LICENSE"],
+    ["a case variant of the registry license", "Registry/License"],
+    ["the third-party notices", "THIRD_PARTY_NOTICES.md"],
+    ["a case variant of the notices", "third_party_notices.md"],
   ])("refuses %s", (_name, path) => {
     expect(codes([modified(path)])).toEqual(["error:MAINTAINER_ONLY"]);
   });
@@ -132,6 +138,35 @@ describe("checkPullRequest: maintainer-only files", () => {
   it("does not block a lookalike that is only a prefix of the name", () => {
     expect(codes([modified("registry/ledger.jsonl.md")])).toEqual([]);
     expect(codes([modified("sponsors-policy.md")])).toEqual([]);
+  });
+
+  it.each([
+    "LICENSE.md",
+    "docs/LICENSE",
+    "docs/license-notes.md",
+    "packages/registry/LICENSE",
+    "registry/LICENSE.md",
+    "registry/licenses/x.txt",
+    "THIRD_PARTY_NOTICES.txt",
+  ])("does not block the lookalike %s", (path) => {
+    expect(codes([modified(path)])).toEqual([]);
+  });
+
+  it("refuses a license file renamed away or deleted, and a lookalike renamed onto it", () => {
+    expect(codes([deleted("LICENSE")])).toEqual(["error:MAINTAINER_ONLY"]);
+    expect(codes([renamed("LICENSE", "docs/old-license.txt")])).toEqual(["error:MAINTAINER_ONLY"]);
+    expect(codes([renamed("docs/x.txt", "registry/LICENSE")])).toEqual(["error:MAINTAINER_ONLY"]);
+  });
+
+  it("explains the license rule in its own words, not the ledger or sponsor one", () => {
+    const [issue] = checkPullRequest([modified("LICENSE")], "NONE");
+    expect(issue?.message).toContain("license files are maintainer-only");
+    expect(issue?.message).not.toContain("ledger");
+    expect(issue?.message).not.toContain("Sponsor");
+  });
+
+  it("is not applied to maintainers", () => {
+    expect(codes([modified("LICENSE")], "OWNER")).toEqual([]);
   });
 });
 

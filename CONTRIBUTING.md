@@ -114,7 +114,7 @@ choose **Edit file**.
 | repository | Not found, private, archived, or renamed | Use the exact name GitHub shows, or pick another project |
 | compatibleWith or alternatives | Names a repo that has no brick yet | Remove it, or add that brick first |
 | MIXED_CHANGE | The pull request changes other files besides the brick | Keep it to `registry/bricks`, and send the rest as its own pull request |
-| MAINTAINER_ONLY | You changed the ledger or a sponsor file | Remove it. A maintainer adds the ledger line after your brick is merged |
+| MAINTAINER_ONLY | You changed the ledger, a sponsor file or a license file | Remove it. A maintainer adds the ledger line after your brick is merged. If you think a license is wrong, open an issue |
 | BRICK_REMOVAL | You deleted or renamed a brick that is already listed | Open a bug report that names the brick. Maintainers handle it, because the ledger changes too |
 | MANY_BRICKS or TOO_MANY_BRICKS | The pull request has several bricks | One brick per pull request is best. More than 5 is refused |
 

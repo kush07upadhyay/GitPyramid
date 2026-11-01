@@ -51,6 +51,8 @@ export function parseNameStatus(raw: string): Change[] {
 const BRICKS = "registry/bricks/";
 const LEDGER = "registry/ledger.jsonl";
 const SPONSORS = "sponsors/";
+/** The licenses and the notice of third-party licenses. Only the exact paths, never lookalikes. */
+const LICENSE_FILES = new Set(["license", "third_party_notices.md", "registry/license"]);
 /** More than one brick is discouraged. More than this many is refused. */
 export const MAX_BRICKS = 5;
 const TRUSTED = new Set(["OWNER", "MEMBER", "COLLABORATOR"]);
@@ -58,9 +60,10 @@ const TRUSTED = new Set(["OWNER", "MEMBER", "COLLABORATOR"]);
 // Matching ignores case. On Windows and macOS, `Registry/LEDGER.jsonl` is the same file as the real
 // ledger, so a case variant must be protected too.
 const inBricks = (path: string) => path.toLowerCase().startsWith(BRICKS);
+const isLicenseFile = (path: string) => LICENSE_FILES.has(path.toLowerCase());
 const isProtected = (path: string) => {
   const lower = path.toLowerCase();
-  return lower === LEDGER || lower.startsWith(SPONSORS);
+  return lower === LEDGER || lower.startsWith(SPONSORS) || LICENSE_FILES.has(lower);
 };
 
 function touched(change: Change): string[] {
@@ -88,7 +91,9 @@ export function checkPullRequest(changes: readonly Change[], authorAssociation: 
       "MAINTAINER_ONLY",
       path.toLowerCase() === LEDGER
         ? "The ledger is edited by maintainers only. A maintainer adds the line for your brick after it is merged. Please remove this file from your pull request."
-        : "Sponsor files are maintainer-only (see docs/SPONSORSHIP.md). Please remove this file from your pull request.",
+        : isLicenseFile(path)
+          ? "The license files are maintainer-only, because they decide how everyone may use this project. If you think a license is wrong, open an issue. Please remove this file from your pull request."
+          : "Sponsor files are maintainer-only (see docs/SPONSORSHIP.md). Please remove this file from your pull request.",
     );
   }
 
