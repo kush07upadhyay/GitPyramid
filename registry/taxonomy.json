@@ -280,6 +280,11 @@
           "description": "Package managers and dependency tooling."
         },
         {
+          "id": "version-control",
+          "label": "Version control and collaboration",
+          "description": "Version control systems and self-hosted code collaboration tools."
+        },
+        {
           "id": "developer-environments",
           "label": "Developer environments",
           "description": "Dev containers, shells and environment tooling."
