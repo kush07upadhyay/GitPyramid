@@ -265,4 +265,17 @@ describe("checkOnline", () => {
     const issues = await checkOnline([brick], ledger, { fetcher, now: NOW, timeoutMs: 20 });
     expect(codes(issues)).toEqual(["warning:ONLINE_UNAVAILABLE"]);
   });
+
+  it("gives up when the body stalls after the headers arrive", async () => {
+    const fetcher: Fetcher = async (_url, init) => ({
+      status: 200,
+      headers: { get: () => null },
+      json: () =>
+        new Promise((_resolve, reject) => {
+          init.signal?.addEventListener("abort", () => reject(new Error("aborted")));
+        }),
+    });
+    const issues = await checkOnline([brick], ledger, { fetcher, now: NOW, timeoutMs: 20 });
+    expect(codes(issues)).toEqual(["warning:ONLINE_UNAVAILABLE"]);
+  });
 });

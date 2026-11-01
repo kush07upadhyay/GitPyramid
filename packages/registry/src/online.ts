@@ -80,8 +80,12 @@ export async function checkOnline(
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), timeoutMs);
     let response: HttpResponseLike;
+    let payload: unknown;
     try {
       response = await fetcher(url, { headers, signal: controller.signal });
+      // The body is read inside the timeout window too, so a server that sends headers and then
+      // stalls cannot hang a CI run.
+      if (response.status === 200) payload = await response.json();
     } catch {
       note(
         "warning",
@@ -106,7 +110,6 @@ export async function checkOnline(
         "ONLINE_RATE_LIMITED",
         "GitHub's rate limit was reached, so the remaining repositories were not checked online. Set GITHUB_TOKEN to raise the limit.",
       );
-      unverified += bricks.length - used;
       break;
     }
     if (response.status === 404) {
@@ -148,7 +151,7 @@ export async function checkOnline(
 
     let parsed: z.infer<typeof RepoResponse>;
     try {
-      parsed = RepoResponse.parse(await response.json());
+      parsed = RepoResponse.parse(payload);
     } catch {
       note(
         "warning",
