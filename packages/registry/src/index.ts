@@ -1,3 +1,4 @@
+export { type AdmitOptions, type AdmitResult, admitBrick } from "./admit";
 export { checkLicense, compareWithGitHub, normalizeLicenseId } from "./license";
 export { loadRegistry } from "./loader";
 export { checkOnline } from "./online";

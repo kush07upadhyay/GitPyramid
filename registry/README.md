@@ -52,9 +52,18 @@ Every message names the file and line and says what to do. Messages come in two 
 ## The ledger
 
 One JSON object per line. Contributors never edit this file. A maintainer appends a line when a
-brick is merged. Existing lines never change, except that an Epoch migration may fill in `tier` as a
-reviewed pull request with a public diff, and a maintainer updates `repo` when GitHub renames a
-repository (see below).
+brick is merged, with one command that works out the next id and looks up GitHub's numeric id:
+
+```bash
+pnpm admit expressjs/express --impact 4 --by kush07upadhyay
+```
+
+It refuses, and writes nothing, if the manifest has errors, the repository is private, archived or
+renamed, the brick is already admitted, or the new line would break the ledger. Add `--dry-run` to
+see the line first. Pick the impact level from the rubric in
+[docs/SCORING.md](../docs/SCORING.md#impact-rubric). Existing lines never change, except that an
+Epoch migration may fill in `tier` as a reviewed pull request with a public diff, and a maintainer
+updates `repo` when GitHub renames a repository (see below).
 
 ```json
 {"id":2,"repo":"torvalds/linux","githubId":2325298,"admitted":"2026-11-01","by":"kush07upadhyay","impact":5}

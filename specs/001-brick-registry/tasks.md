@@ -42,7 +42,8 @@ Legend: `[x]` done on this branch, `[ ]` later. IDs are stable so commits and is
 - [ ] T040 CI workflow that runs `pnpm check` and the online check on changed manifests (`ci/gatekeeper`)
 - [ ] T041 `.agents/skills/add-brick` and `review-brick-pr` skills (`chore/agent-customizations`)
 - [ ] T042 Review pool: five real brick pull requests opened before announcing (`docs/launch-kit`)
-- [ ] T043 Admission bot that appends ledger lines (PRD R3)
+- [x] T036 `pnpm admit` appends the ledger line for a merged brick (`admit.ts`, `admit.test.ts`), added after the first review of the launch checklist showed that admitting by hand is error-prone
+- [ ] T043 Admission bot that runs the same logic on merge, so no maintainer has to type the command (PRD R3)
 - [ ] T044 Weekly job that flags archived or renamed repositories (PRD REG-7, R3)
 - [ ] T045 Seed 500 ingestion and the `tier` calibration migration (PRD R1)
 
