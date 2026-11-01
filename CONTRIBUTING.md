@@ -142,7 +142,7 @@ You need Node.js 22 or newer and Git. pnpm comes through Corepack.
 ```bash
 corepack enable
 pnpm install
-pnpm check        # lint, typecheck, tests and registry validation
+pnpm check        # lint, typecheck, tests, link check and registry validation
 pnpm validate     # only the registry
 pnpm brick:new expressjs/express --sector backend --category web-frameworks
 ```
