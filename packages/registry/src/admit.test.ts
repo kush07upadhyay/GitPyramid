@@ -238,6 +238,16 @@ describe("admitBrick: refusals leave the ledger untouched", () => {
   it("when GitHub is rate limited, and suggests the offline route", () =>
     refuses({ fetcher: github(403, {}, { "x-ratelimit-remaining": "0" }) }, "rate limit"));
 
+  it("when GitHub answers 429 Too Many Requests", () =>
+    refuses({ fetcher: github(429, {}) }, "rate limit"));
+
+  it("when GitHub refuses for another reason, it is not called a rate limit", async () => {
+    seed();
+    const result = await admit({ fetcher: github(403, {}) });
+    expect(message(result)).toContain("status 403");
+    expect(message(result)).not.toContain("rate limit");
+  });
+
   it("when GitHub answers with something unexpected", () =>
     refuses({ fetcher: github(200, { hello: "world" }) }, "not in the expected shape"));
 
