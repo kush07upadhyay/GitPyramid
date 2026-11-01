@@ -266,6 +266,8 @@ spec under `specs/`.
 | OQ-10 | Analytics choice | Cookieless first-party counters only. | R1 |
 | OQ-11 | How do the founder's own products appear? | Labeled "By the maintainer", same rules as sponsors. | R1 |
 | OQ-12 | Contributor recognition | Generated wall from merged pull requests, not a manual file. | R3 |
+| OQ-13 | In what order does a landing list its bricks? | A plain, documented, deterministic order (for example by score then id), never influenced by sponsors. | Spec 003 plan |
+| OQ-14 | Does Epoch II continue the same stairways? | Yes, so shared links stay valid. The number of risers grows. | Layout spec |
 
 ## 14. Glossary
 
