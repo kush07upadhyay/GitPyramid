@@ -264,7 +264,13 @@ the job uses a read-only GitHub App or fine-grained token held as a secret
   Cloudflare to attach it.
 - **CI.** `pull_request` only, `contents: read`, third-party actions pinned to a commit SHA, no
   `pull_request_target`, concurrency cancel. Registry checks on changed files can call the GitHub API
-  with the built-in token.
+  with the built-in token. Two jobs: `check` runs lint, typecheck, tests and registry validation
+  (`pnpm check`), and `pr-rules` runs the pull request guard and the online check on changed
+  bricks. The guard enforces the contributor rules in plain language (no ledger or sponsor edits, a
+  brick pull request touches only `registry/bricks`, removals go through maintainers, at most 5
+  bricks). The validator refuses symbolic links, so a pull request cannot make it read files
+  outside the registry. Dependabot proposes grouped weekly updates after a 7 day cooldown. Event
+  values reach shell steps through `env`, never by pasting `${{ }}` into a script.
 - **Headers.** A strict Content Security Policy: scripts, images and connections from our own origin
   only, and `frame-ancestors 'none'`. This also stops third-party sponsor code by construction.
 - **Privacy.** No cookies and no third-party analytics. Sponsor reporting is first-party and

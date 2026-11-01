@@ -1,0 +1,36 @@
+# Dependabot keeps the pinned GitHub Actions and the npm packages current. Updates arrive weekly and
+# grouped, so a week of releases is one pull request to review, not ten. A new release waits 7 days
+# before it is proposed, which gives the community time to spot a compromised version.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: "05:00"
+      timezone: Asia/Kolkata
+    cooldown:
+      default-days: 7
+    commit-message:
+      prefix: "chore(ci)"
+    groups:
+      actions:
+        patterns: ["*"]
+    open-pull-requests-limit: 3
+
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: "05:00"
+      timezone: Asia/Kolkata
+    cooldown:
+      default-days: 7
+    commit-message:
+      prefix: "chore(deps)"
+    groups:
+      minor-and-patch:
+        update-types: ["minor", "patch"]
+    open-pull-requests-limit: 5

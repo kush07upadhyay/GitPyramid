@@ -53,7 +53,8 @@ Every message names the file and line and says what to do. Messages come in two 
 
 One JSON object per line. Contributors never edit this file. A maintainer appends a line when a
 brick is merged. Existing lines never change, except that an Epoch migration may fill in `tier` as a
-reviewed pull request with a public diff.
+reviewed pull request with a public diff, and a maintainer updates `repo` when GitHub renames a
+repository (see below).
 
 ```json
 {"id":2,"repo":"torvalds/linux","githubId":2325298,"admitted":"2026-11-01","by":"kush07upadhyay","impact":5}
@@ -71,6 +72,11 @@ reviewed pull request with a public diff.
 
 Brick #1 is GitPyramid itself, rated 1 (emerging) on purpose: the founder's own project does not get
 a thumb on the scale.
+
+When GitHub renames or moves a repository, the online check reports the new name. A maintainer then
+renames the manifest and updates `repo` on the existing ledger line in one commit. The `id` and
+`githubId` stay, because the brick is the same repository. Contributors cannot do this part, since it
+edits the ledger, so the pull request guard sends renames and removals to maintainers.
 
 ## The first bricks
 
