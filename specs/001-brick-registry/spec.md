@@ -195,6 +195,14 @@ Each row maps to a test. File names are in `packages/registry/src/`.
 | Scaffold: prefill, license normalization, undetectable license, unsafe homepage | Fills what it can, leaves human fields as placeholders | `integration.test.ts` (scaffoldBrick) |
 | Scaffold: existing file, moved repo, missing repo, offline, network failure, bad input | Refuses or degrades with a clear message | `integration.test.ts` |
 | Exit codes and bad usage | 0 ok, 1 errors, 2 usage | `integration.test.ts` (cli main) |
+| Admit: missing impact, impact outside 1 to 5 or fractional, bad repository, login, date or GitHub id, offline without an id | Usage mistake. Exit 2. Nothing written | `admit.test.ts` (usage mistakes) |
+| Admit: no manifest yet, a manifest with errors, already admitted | Refused. Exit 1. Ledger byte-identical | `admit.test.ts` (refusals leave the ledger untouched) |
+| Admit: a ledger that already has a gap or another problem | Refused, because the next id cannot be trusted | `admit.test.ts` "when the ledger already has a gap" |
+| Admit: the same GitHub id under another name | Refused as a duplicate | `admit.test.ts` "when the same GitHub id is already in the ledger" |
+| Admit: private, archived, disabled, moved, missing, rate limited (403 or 429), server error, odd answer, network down, wrong `--github-id` | Refused with the reason. A plain 403 is not called a rate limit | `admit.test.ts` (refusals) |
+| Admit: Windows line endings, no final newline, empty or missing ledger | Line endings matched, newline repaired, first id is 1 | `admit.test.ts` (the happy path) |
+| Admit: a line that would break the ledger, such as a future date | Checked in memory before writing. Refused | `admit.test.ts` "when the line itself would break the ledger" |
+| Admit: dry run | Prints the line. Writes nothing | `admit.test.ts` "writes nothing in a dry run" |
 | `--changed-since` with an option-like value | Rejected so it cannot become a git option | `integration.test.ts` "refuses an unsafe git reference" |
 | Published JSON Schema drifts from the code | Test fails | `schema-sync.test.ts` |
 | CONTRIBUTING template or example drifts from the validator | Test fails | `docs-examples.test.ts` |
@@ -247,7 +255,7 @@ Each row maps to a test. File names are in `packages/registry/src/`.
 | Item | Where it goes |
 | :--- | :--- |
 | CI workflow that runs these checks | Branch `ci/gatekeeper` |
-| Admission bot that appends ledger lines | PRD R3 |
+| Admission bot that appends ledger lines on merge, with no maintainer typing the command | PRD R3 |
 | Weekly job that flags archived or renamed repositories | PRD REG-7, R3 |
 | Scores, states, tiers and positions | [Spec 002](../002-pyramid-score/spec.md) and the layout spec |
 | Web form for adding a brick | After launch, if the JSON path proves too hard |

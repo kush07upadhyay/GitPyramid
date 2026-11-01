@@ -35,7 +35,7 @@ maintainer who is inactive for six months becomes emeritus and can return on req
    is public, not archived and has the stated license.
 4. **Reviews.** The author reviews other pull requests (see below). Reviewers check the facts.
 5. **Merge.** A maintainer merges with a squash merge.
-6. **Admission.** A maintainer or the admission bot appends a ledger line: id, impact level, tier and
+6. **Admission.** A maintainer (with `pnpm admit`) or, later, the admission bot appends a ledger line: id, impact level, tier and
    slot. The monument shows the brick at the next build.
 7. **Life.** Live metrics change its color and labels. Its position never moves except at an Epoch
    boundary.
