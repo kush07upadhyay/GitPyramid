@@ -18,7 +18,9 @@
     "brick:new": "tsx packages/registry/src/cli.ts new",
     "admit": "tsx packages/registry/src/cli.ts admit",
     "build:schema": "tsx packages/registry/src/build-schema.ts",
-    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm validate"
+    "links": "tsx tools/check-links.ts",
+    "setup:github": "tsx tools/github-setup.ts",
+    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm links && pnpm validate"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.6.4",

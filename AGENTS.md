@@ -30,7 +30,10 @@ Run everything from the repository root. Node 22 or newer. pnpm comes through Co
 | Command | What it does |
 | :--- | :--- |
 | `pnpm install` | Install. Use `--frozen-lockfile` in CI |
-| `pnpm check` | Lint, typecheck, tests and registry validation. The same thing CI runs |
+| `pnpm check` | Lint, typecheck, tests, link check and registry validation. The same thing CI runs |
+| `pnpm links` | Check relative links and heading anchors in Markdown |
+| `pnpm admit owner/repo --impact 3` | Maintainers only: append the ledger line for a merged brick |
+| `pnpm setup:github` | Maintainers only: dry-run the repository settings. `--apply` changes them |
 | `pnpm validate` | Validate the registry offline. Add `--online` to ask GitHub |
 | `pnpm brick:new owner/repo --sector backend` | Scaffold a manifest, prefilled from GitHub |
 | `pnpm build:schema` | Regenerate `registry/schema/brick.schema.json` |
