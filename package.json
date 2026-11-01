@@ -16,6 +16,7 @@
     "test": "vitest run",
     "validate": "tsx packages/registry/src/cli.ts validate",
     "brick:new": "tsx packages/registry/src/cli.ts new",
+    "admit": "tsx packages/registry/src/cli.ts admit",
     "build:schema": "tsx packages/registry/src/build-schema.ts",
     "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm validate"
   },

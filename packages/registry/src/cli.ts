@@ -1,5 +1,6 @@
 import { appendFileSync, existsSync } from "node:fs";
 import { relative, resolve } from "node:path";
+import { admitBrick } from "./admit";
 import { countIssues, formatGitHub, formatSummaryMarkdown, formatText } from "./format";
 import { changedBrickFiles } from "./git";
 import { loadRegistry } from "./loader";
@@ -11,8 +12,10 @@ import { validateRegistry } from "./validate";
 const USAGE = `Usage:
   pnpm validate [--online] [--changed-since <ref>] [--format text|github] [--require-ledger] [--root <dir>]
   pnpm brick:new <owner/repo> --sector <sector> [--category <category>] [--offline]
+  pnpm admit <owner/repo> --impact <1-5> [--by <login>] [--date YYYY-MM-DD] [--dry-run]
+        [--github-id <id> --offline] [--incubating] [--root <dir>]
 
-Exit codes: 0 ok (warnings allowed), 1 the registry has errors, 2 bad usage.`;
+Exit codes: 0 ok (warnings allowed), 1 the registry has errors or blocks the change, 2 bad usage.`;
 
 interface Parsed {
   command: string | undefined;
@@ -20,7 +23,17 @@ interface Parsed {
   flags: Map<string, string | true>;
 }
 
-const VALUE_FLAGS = new Set(["format", "root", "changed-since", "sector", "category"]);
+const VALUE_FLAGS = new Set([
+  "format",
+  "root",
+  "changed-since",
+  "sector",
+  "category",
+  "impact",
+  "by",
+  "date",
+  "github-id",
+]);
 
 function parseArgs(argv: string[]): Parsed {
   const [command, ...rest] = argv;
@@ -127,6 +140,55 @@ async function runNew(parsed: Parsed): Promise<number> {
   return 0;
 }
 
+function wholeNumber(value: string | undefined, flagName: string): number | undefined | "bad" {
+  if (value === undefined) return undefined;
+  if (!/^\d+$/.test(value)) {
+    console.error(`--${flagName} must be a whole number, but got "${value}".`);
+    return "bad";
+  }
+  return Number(value);
+}
+
+async function runAdmit(parsed: Parsed): Promise<number> {
+  const repo = parsed.positional[0];
+  if (!repo) {
+    console.error(
+      `Give the repository, for example: pnpm admit fastapi/fastapi --impact 4\n\n${USAGE}`,
+    );
+    return 2;
+  }
+  const impact = wholeNumber(flag(parsed, "impact"), "impact");
+  const githubId = wholeNumber(flag(parsed, "github-id"), "github-id");
+  if (impact === "bad" || githubId === "bad") return 2;
+
+  const result = await admitBrick({
+    rootDir: resolve(process.cwd(), flag(parsed, "root") ?? "registry"),
+    repo,
+    impact,
+    by: flag(parsed, "by"),
+    date: flag(parsed, "date"),
+    githubId,
+    offline: parsed.flags.has("offline"),
+    incubating: parsed.flags.has("incubating"),
+    dryRun: parsed.flags.has("dry-run"),
+    token: process.env.GITHUB_TOKEN ?? process.env.GH_TOKEN,
+  });
+  if (!result.ok) {
+    console.error(result.message);
+    return result.kind === "usage" ? 2 : 1;
+  }
+  console.log(result.line);
+  for (const note of result.notes) console.log(`  note: ${note}`);
+  if (!result.wrote) {
+    console.log(`\nDry run: that line would be #${result.id}. Nothing was written.`);
+    return 0;
+  }
+  console.log(
+    `\nAdded #${result.id} to registry/ledger.jsonl. Commit it, for example:\n  git add registry/ledger.jsonl\n  git commit -m 'chore(registry): admit ${repo.toLowerCase()} as #${result.id}'`,
+  );
+  return 0;
+}
+
 export async function main(argv: string[]): Promise<number> {
   let parsed: Parsed;
   try {
@@ -141,6 +203,8 @@ export async function main(argv: string[]): Promise<number> {
         return await runValidate(parsed);
       case "new":
         return await runNew(parsed);
+      case "admit":
+        return await runAdmit(parsed);
       default:
         console.error(USAGE);
         return 2;
