@@ -313,7 +313,9 @@ rank, and the constitution makes that a rule, so you never have to argue it case
   logic has tests, but the first `--apply` may show a permission message. That is expected and safe
   to repeat.
 - The GitHub Actions workflow has been checked against GitHub's schema and rehearsed command by
-  command. The `check` job passed on its first run on GitHub on 2026-11-01. The `pr-rules` job runs
-  only on pull requests, so it is unproven until the first one. If it fails, read the log, fix the
-  cause on a branch and open a pull request.
+  command. The `check` job passed on its first run on GitHub on 2026-11-01. The `pr-rules` job also
+  passed on the first pull request, a Dependabot one (#1), which touched only a dependency. Its
+  refusals (ledger, sponsor and license files, mixed or removed bricks) are proven by tests only, not
+  yet by a real stranger's pull request. If a job fails, read the log, fix the cause on a branch and
+  open a pull request.
 - The 3D monument, search and AI are designed in the specs but not built.
