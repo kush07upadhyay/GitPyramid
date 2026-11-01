@@ -148,3 +148,30 @@ defenses:
 2. Compute scores with config version 1 and plot the distribution.
 3. Choose tier thresholds that give about 50 / 30 / 15 / 5. Record the choice in an ADR.
 4. Freeze them for Epoch I and publish the histogram in the repository.
+
+## Implementation notes
+
+The code is in [packages/scoring](../packages/scoring) and the constants are in
+[registry/scoring.config.json](../registry/scoring.config.json). Every worked example above is a test
+(`examples.test.ts`) and every row of the edge-case table maps to one in
+[spec 002](../specs/002-pyramid-score/spec.md).
+
+- **Config shape.** Weights, log caps, decay and maturity windows, state thresholds and the four tier
+  thresholds. The config is validated on load: weights inside a pillar must add up to 1 (otherwise a
+  pillar could pass 25 points), tiers start at 0 and strictly increase, and unknown keys are
+  rejected so a typo cannot silently do nothing.
+- **The tier ids are not configurable.** `1x1x1`, `2x1x1`, `2x2x1` and `2x2x2` are the vocabulary
+  that the ledger stores. Only their thresholds and names can change.
+- **Rounding is deterministic.** `round2` uses the exact decimal value of the double (`toFixed`), so
+  `1.005` rounds to `1.00` on every engine, because the stored number is slightly below 1.005.
+  Rounding happens once, on the total, from the unrounded pillars. The pillars shown are rounded
+  separately for display, so they may not add up to the total by 0.01. The Ecosystem giant row is an
+  example: 24.62 + 23.03 + 24.47 + 25.00 is 97.12, and the total is 97.11.
+- **Scores are computed in one place.** `Math.log10` and `Math.exp` may differ in the last bit between
+  JavaScript engines. The tier is therefore chosen once, in the Node build, and stored in the
+  ledger. Browsers never recompute a tier, so a one-bit difference cannot move a brick.
+- **Unrated is a result, not an error.** `rateRepository` returns the list of missing metrics when
+  ingestion was incomplete. A metric that is present but wrong (negative, `NaN`, infinite) throws a
+  `RangeError` that names the field, because that is a bug to fix and not a case to hide.
+- **No clock, no randomness.** A test scans the source and fails if it mentions `Date`,
+  `Math.random`, `performance.now` or `process.env`. Callers pass ages in days.

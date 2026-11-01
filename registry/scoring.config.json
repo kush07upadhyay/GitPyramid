@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "popularity": {
+    "weights": { "stars": 0.7, "forks": 0.3 },
+    "logCaps": { "stars": 5.5, "forks": 4.5 }
+  },
+  "community": {
+    "weights": { "contributors": 0.6, "commits": 0.4 },
+    "logCaps": { "contributors": 3.5, "commits": 3.5 }
+  },
+  "stability": {
+    "weights": { "recency": 0.5, "maturity": 0.3, "issueHealth": 0.2 },
+    "recencyDecayDays": 365,
+    "maturityDays": 730,
+    "neutralIssueHealth": 0.5
+  },
+  "states": {
+    "weatheredAfterDays": 365,
+    "translucentUnderDays": 274,
+    "battleTestedMinScore": 55
+  },
+  "tiers": [
+    { "id": "1x1x1", "name": "Modular Unit", "minScore": 0 },
+    { "id": "2x1x1", "name": "Standard Ashlar", "minScore": 40 },
+    { "id": "2x2x1", "name": "Structural Pillar", "minScore": 60 },
+    { "id": "2x2x2", "name": "Foundation Core", "minScore": 80 }
+  ]
+}

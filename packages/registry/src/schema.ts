@@ -1,10 +1,12 @@
+import { TIER_IDS, type TierId } from "@gitpyramid/scoring";
 import { z } from "zod";
 
 export const SECTORS = ["systems", "frontend", "backend", "ai", "devops"] as const;
 export type Sector = (typeof SECTORS)[number];
 
-export const TIERS = ["1x1x1", "2x1x1", "2x2x1", "2x2x2"] as const;
-export type Tier = (typeof TIERS)[number];
+/** Owned by the scoring package, so the ledger can only hold tiers the scoring rules can produce. */
+export const TIERS = TIER_IDS;
+export type Tier = TierId;
 
 export const LIMITS = {
   maxFileBytes: 8 * 1024,

@@ -26,6 +26,9 @@ importers:
 
   packages/registry:
     dependencies:
+      '@gitpyramid/scoring':
+        specifier: workspace:*
+        version: link:../scoring
       jsonc-parser:
         specifier: ^3.3.1
         version: 3.3.1
