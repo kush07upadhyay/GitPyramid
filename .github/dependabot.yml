@@ -33,4 +33,9 @@ updates:
     groups:
       minor-and-patch:
         update-types: ["minor", "patch"]
+    # @types/node must keep the major of the oldest Node version in package.json "engines". Raise
+    # both together, by hand, when the minimum Node version changes.
+    ignore:
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
     open-pull-requests-limit: 5
