@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schema/brick.schema.json",
+  "schemaVersion": 1,
+  "repo": "rust-lang/rust",
+  "name": "Rust",
+  "sector": "systems",
+  "category": "languages-and-compilers",
+  "problemSolved": "Compiles to fast native code and checks memory safety at build time, without a garbage collector.",
+  "techStack": ["rust", "llvm"],
+  "license": "MIT OR Apache-2.0",
+  "website": "https://www.rust-lang.org"
+}

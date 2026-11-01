@@ -33,7 +33,7 @@ a clone of a listed project (if it is a real alternative, add it to the listed b
 
 Use the browser. No Git needed.
 
-1. Open [this link](https://github.com/kush07upadhyay/GitPyramid/new/main?filename=registry/bricks/owner/repo.json&value=%7B%0A%20%20%22%24schema%22%3A%20%22..%2F..%2Fschema%2Fbrick.schema.json%22%2C%0A%20%20%22schemaVersion%22%3A%201%2C%0A%20%20%22repo%22%3A%20%22owner%2Frepo%22%2C%0A%20%20%22name%22%3A%20%22Display%20Name%22%2C%0A%20%20%22sector%22%3A%20%22backend%22%2C%0A%20%20%22category%22%3A%20%22web-frameworks%22%2C%0A%20%20%22problemSolved%22%3A%20%22TODO%3A%20one%20plain%20sentence%20about%20the%20problem%20this%20project%20solves.%22%2C%0A%20%20%22techStack%22%3A%20%5B%22todo%22%5D%2C%0A%20%20%22license%22%3A%20%22MIT%22%0A%7D%0A) to
+1. Open [this link](https://github.com/kush07upadhyay/GitPyramid/new/main?filename=registry/bricks/owner/repo.json&value=%7B%0A%20%20%22%24schema%22%3A%20%22..%2F..%2Fschema%2Fbrick.schema.json%22%2C%0A%20%20%22schemaVersion%22%3A%201%2C%0A%20%20%22repo%22%3A%20%22owner%2Frepo%22%2C%0A%20%20%22name%22%3A%20%22Display%20Name%22%2C%0A%20%20%22sector%22%3A%20%22backend%22%2C%0A%20%20%22category%22%3A%20%22web-frameworks%22%2C%0A%20%20%22problemSolved%22%3A%20%22TODO%3A%20one%20plain%20sentence%20about%20the%20problem%20this%20project%20solves.%22%2C%0A%20%20%22techStack%22%3A%20%5B%22replace-me%22%5D%2C%0A%20%20%22license%22%3A%20%22MIT%22%0A%7D%0A) to
    open the editor with a template. If it does not prefill, use **Add file, Create new file** in the
    `registry/bricks` folder and paste the template below. GitHub will offer to fork the repository
    for you. Accept.
@@ -54,7 +54,7 @@ The template:
   "sector": "backend",
   "category": "web-frameworks",
   "problemSolved": "TODO: one plain sentence about the problem this project solves.",
-  "techStack": ["todo"],
+  "techStack": ["replace-me"],
   "license": "MIT"
 }
 ```
@@ -69,12 +69,10 @@ A finished example (`registry/bricks/fastapi/fastapi.json`):
   "name": "FastAPI",
   "sector": "backend",
   "category": "web-frameworks",
-  "problemSolved": "Builds typed, fast web APIs in Python with automatic OpenAPI documentation.",
-  "techStack": ["python", "asgi", "openapi"],
+  "problemSolved": "Builds typed web APIs in Python with automatic validation and interactive OpenAPI documentation.",
+  "techStack": ["python", "asgi", "pydantic"],
   "license": "MIT",
-  "website": "https://fastapi.tiangolo.com",
-  "compatibleWith": [],
-  "alternatives": []
+  "website": "https://fastapi.tiangolo.com"
 }
 ```
 
@@ -96,7 +94,7 @@ A finished example (`registry/bricks/fastapi/fastapi.json`):
 **Do not add** stars, scores, states, ids, positions or an impact level. They are computed or set by
 maintainers, and CI will say so if you try.
 
-Good `problemSolved`: "Builds typed, fast web APIs in Python with automatic OpenAPI documentation."
+Good `problemSolved`: "Builds typed web APIs in Python with automatic validation and interactive OpenAPI documentation."
 Not good: "The BEST framework ever!!! See https://example.com" (hype, link, no clear problem).
 
 ### 4. Read what CI says
@@ -111,6 +109,7 @@ choose **Edit file**.
 | JSON | A typo such as a trailing comma or a missing quote | Look at the line number shown |
 | category | Not a category of your sector | Pick one from the taxonomy, or request one |
 | problemSolved | Wrong length, no period, a link or a dash, or still says TODO | Rewrite as one plain sentence |
+| techStack | Still says `replace-me`, or has more than 8 tags | List the real technologies, lowercase |
 | license | Not a valid SPDX id, or it differs from what GitHub shows | Copy the id from the repository page |
 | repository | Not found, private, archived, or renamed | Use the exact name GitHub shows, or pick another project |
 | compatibleWith or alternatives | Names a repo that has no brick yet | Remove it, or add that brick first |
@@ -141,7 +140,7 @@ corepack enable
 pnpm install
 pnpm check        # lint, typecheck, tests and registry validation
 pnpm validate     # only the registry
-pnpm brick:new fastapi/fastapi --sector backend --category web-frameworks
+pnpm brick:new expressjs/express --sector backend --category web-frameworks
 ```
 
 `pnpm format` fixes formatting. Use `pnpm validate --online` to also check the repositories against
@@ -152,7 +151,7 @@ GitHub. Set `GITHUB_TOKEN` in your environment to avoid rate limits.
 - Work on a branch, not on `main`. Names: `feat/`, `fix/`, `docs/`, `chore/`, `ci/`, and
   `brick/<owner>-<repo>` for bricks.
 - Use [Conventional Commits](https://www.conventionalcommits.org): `feat(registry): add
-  fastapi/fastapi`, `fix(scoring): clamp negative ages`, `docs: explain epochs`.
+  expressjs/express`, `fix(scoring): clamp negative ages`, `docs: explain epochs`.
 - Keep a pull request to one logical change. Do not mix a brick with code changes.
 - The title becomes the squash-merge commit, so write it as a Conventional Commit.
 - Fill in the pull request template. It asks for the review links and AI disclosure.

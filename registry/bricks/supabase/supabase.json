@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schema/brick.schema.json",
+  "schemaVersion": 1,
+  "repo": "supabase/supabase",
+  "name": "Supabase",
+  "sector": "backend",
+  "category": "backend-as-a-service",
+  "problemSolved": "Provides a Postgres database with authentication, file storage and realtime APIs as one self-hostable backend.",
+  "techStack": ["typescript", "postgres"],
+  "license": "Apache-2.0",
+  "website": "https://supabase.com"
+}

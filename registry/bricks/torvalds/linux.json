@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schema/brick.schema.json",
+  "schemaVersion": 1,
+  "repo": "torvalds/linux",
+  "name": "Linux",
+  "sector": "systems",
+  "category": "operating-systems",
+  "problemSolved": "Runs as the kernel beneath most servers, phones and embedded devices, managing hardware, memory and processes.",
+  "techStack": ["c", "assembly"],
+  "license": "GPL-2.0-only WITH Linux-syscall-note",
+  "website": "https://www.kernel.org"
+}

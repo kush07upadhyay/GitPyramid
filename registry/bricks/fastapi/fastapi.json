@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schema/brick.schema.json",
+  "schemaVersion": 1,
+  "repo": "fastapi/fastapi",
+  "name": "FastAPI",
+  "sector": "backend",
+  "category": "web-frameworks",
+  "problemSolved": "Builds typed web APIs in Python with automatic validation and interactive OpenAPI documentation.",
+  "techStack": ["python", "asgi", "pydantic"],
+  "license": "MIT",
+  "website": "https://fastapi.tiangolo.com"
+}

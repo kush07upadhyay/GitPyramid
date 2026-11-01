@@ -1,0 +1,13 @@
+{
+  "$schema": "../../schema/brick.schema.json",
+  "schemaVersion": 1,
+  "repo": "vercel/next.js",
+  "name": "Next.js",
+  "sector": "frontend",
+  "category": "ui-frameworks",
+  "problemSolved": "Adds routing, server rendering and a build pipeline on top of React for full-stack web applications.",
+  "techStack": ["typescript", "react", "nodejs"],
+  "license": "MIT",
+  "website": "https://nextjs.org",
+  "compatibleWith": ["react/react", "tailwindlabs/tailwindcss"]
+}

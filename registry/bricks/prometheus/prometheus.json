@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schema/brick.schema.json",
+  "schemaVersion": 1,
+  "repo": "prometheus/prometheus",
+  "name": "Prometheus",
+  "sector": "devops",
+  "category": "observability-and-monitoring",
+  "problemSolved": "Collects time series metrics from services and evaluates alerting rules over them with a query language.",
+  "techStack": ["go", "promql"],
+  "license": "Apache-2.0",
+  "website": "https://prometheus.io"
+}

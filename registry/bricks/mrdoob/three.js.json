@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schema/brick.schema.json",
+  "schemaVersion": 1,
+  "repo": "mrdoob/three.js",
+  "name": "three.js",
+  "sector": "frontend",
+  "category": "graphics-3d-and-games",
+  "problemSolved": "Draws 3D graphics in the browser through a high-level API over WebGL and WebGPU.",
+  "techStack": ["javascript", "webgl", "webgpu"],
+  "license": "MIT",
+  "website": "https://threejs.org"
+}
