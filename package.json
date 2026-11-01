@@ -12,7 +12,7 @@
   "scripts": {
     "lint": "biome check .",
     "format": "biome check --write .",
-    "typecheck": "pnpm -r --if-present run typecheck",
+    "typecheck": "pnpm -r --if-present run typecheck && tsc -p tools/tsconfig.json",
     "test": "vitest run",
     "validate": "tsx packages/registry/src/cli.ts validate",
     "brick:new": "tsx packages/registry/src/cli.ts new",
