@@ -15,7 +15,7 @@ Owner: founder. Details and click paths: [NEXT_STEPS](NEXT_STEPS.md).
 
 - [ ] Decide the name ([ADR-0010](decisions/0010-project-name-and-trademark.md)), then buy the domain.
 - [ ] Set up email forwarding for `conduct@`, `security@`, `sponsors@` and `hello@`.
-- [ ] Apply GitHub settings with `tools/github-setup.mjs`, enable Discussions and private reporting.
+- [ ] Apply GitHub settings with `pnpm setup:github` (a dry run first), then enable Discussions by hand.
 - [ ] Create labels and the first issues. Open the review pool pull requests.
 - [ ] Post the announcement from the [launch kit](launch/contributor-launch-kit.md).
 
@@ -90,4 +90,4 @@ public API. The registry itself is the API: it is CC0 files that anyone can read
 | Process | `needs-triage`, `needs-review`, `blocked`, `constitution`, `adr-needed` |
 | Priority | `P0`, `P1`, `P2` |
 
-The definitions live in `.github/labels.yml` and are applied by `tools/github-setup.mjs`.
+The definitions live in `.github/labels.yml` and are applied by `tools/github-setup.ts` (`pnpm setup:github`).
