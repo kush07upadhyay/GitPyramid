@@ -9,6 +9,9 @@
 /.specify/memory/constitution.md   @kush07upadhyay
 /.github/                          @kush07upadhyay
 /docs/decisions/                   @kush07upadhyay
+/LICENSE                           @kush07upadhyay
+/registry/LICENSE                  @kush07upadhyay
+/THIRD_PARTY_NOTICES.md            @kush07upadhyay
 
 # Sector captains can be added per area later, for example:
 # /packages/layout/                @some-captain
